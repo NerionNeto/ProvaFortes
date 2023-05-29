@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{67A0C85F-AAE5-43C4-A26F-BBA848BDB810}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="prjDFPCombustivel.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\prjDFPCombustivelTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="prjDFPCombustivel">
+        <MSBuild Projects="prjDFPCombustivel.dproj"/>
+    </Target>
+    <Target Name="prjDFPCombustivel:Clean">
+        <MSBuild Projects="prjDFPCombustivel.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="prjDFPCombustivel:Make">
+        <MSBuild Projects="prjDFPCombustivel.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="prjDFPCombustivelTests">
+        <MSBuild Projects="Test\prjDFPCombustivelTests.dproj"/>
+    </Target>
+    <Target Name="prjDFPCombustivelTests:Clean">
+        <MSBuild Projects="Test\prjDFPCombustivelTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="prjDFPCombustivelTests:Make">
+        <MSBuild Projects="Test\prjDFPCombustivelTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="prjDFPCombustivel;prjDFPCombustivelTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="prjDFPCombustivel:Clean;prjDFPCombustivelTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="prjDFPCombustivel:Make;prjDFPCombustivelTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
